@@ -16,6 +16,7 @@ class User {
     required this.followers,
     required this.following,
   });
+
   late final String login;
   late final int id;
   late final String? nodeId;
@@ -23,7 +24,7 @@ class User {
   late final String? gravatarId;
   late final String? url;
   late final String? type;
-  late final String? name;
+  late final String name;
   late final String? company;
   late final String? blog;
   late final String? location;
@@ -36,7 +37,7 @@ class User {
   late final String? createdAt;
   late final String? updatedAt;
 
-  User.fromJson(Map<String, dynamic> json){
+  User.fromJson(Map<String, dynamic> json) {
     login = json['login'];
     id = json['id'];
     nodeId = json['node_id'];

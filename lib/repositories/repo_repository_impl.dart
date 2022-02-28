@@ -10,8 +10,6 @@ class RepoRepositoryImpl implements RepoRepository {
 
   RepoRepositoryImpl(this._dioService);
 
-
-
   @override
   Future<List<Repo>> getReposByUser(String user) async {
     var result = await _dioService.getDio().get('/users/$user/repos');

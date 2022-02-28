@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:github_flutter/controllers/repo_controller.dart';
 import 'package:github_flutter/models/repo_model.dart';
@@ -22,6 +21,7 @@ class _UserPageState extends State<UserPage> {
   final RepoController _controller =
       RepoController(RepoRepositoryImpl(DioServiceImpl()));
 
+  @override
   void initState() {
     _controller.getByUsername(widget.user.login);
   }
@@ -36,27 +36,27 @@ class _UserPageState extends State<UserPage> {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           UserWidget(user: widget.user),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
             'Repos',
             style: Theme.of(context).textTheme.headline5,
           ),
-          ValueListenableBuilder<List<Repo?>?>(
+          ValueListenableBuilder<List<Repo>>(
             valueListenable: _controller.repo,
             builder: (_, repo, __) {
-              return repo!.isNotEmpty && repo != null
+              return repo.isNotEmpty
                   ? ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: repo.length,
                       itemBuilder: (context, index) => RepoListItemWidget(
                         repo: repo[index],
                       ),
-                      separatorBuilder: (_, __) => Divider(),
+                      separatorBuilder: (_, __) => const Divider(),
                     )
-                  : CircularProgressIndicator();
+                  : const CircularProgressIndicator();
             },
           ),
         ])),

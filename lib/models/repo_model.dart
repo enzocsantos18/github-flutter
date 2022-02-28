@@ -75,10 +75,11 @@ class Repo {
     required this.watchers,
     required this.defaultBranch,
   });
+
   late final int id;
   late final String? nodeId;
-  late final String? name;
-  late final String? fullName;
+  late final String name;
+  late final String fullName;
   late final bool private;
   late final String? htmlUrl;
   late final String? description;
@@ -120,7 +121,7 @@ class Repo {
   late final String? labelsUrl;
   late final String? releasesUrl;
   late final String? deploymentsUrl;
-  late final String? createdAt;
+  late final String createdAt;
   late final String? updatedAt;
   late final String? pushedAt;
   late final String? gitUrl;
@@ -150,7 +151,7 @@ class Repo {
   late final int watchers;
   late final String? defaultBranch;
 
-  Repo.fromJson(Map<String?, dynamic> json){
+  Repo.fromJson(Map<String?, dynamic> json) {
     id = json['id'];
     nodeId = json['node_id'];
     name = json['name'];

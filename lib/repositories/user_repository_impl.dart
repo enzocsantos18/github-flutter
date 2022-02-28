@@ -9,7 +9,6 @@ class UserRepositoryImpl implements UserRepository {
 
   UserRepositoryImpl(this._dioService);
 
-
   @override
   Future<User> getUser(String user) async {
     var result = await _dioService.getDio().get('/users/$user');

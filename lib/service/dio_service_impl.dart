@@ -7,7 +7,6 @@ class DioServiceImpl implements DioService {
   Dio getDio() {
     return Dio(BaseOptions(
       baseUrl: 'https://api.github.com/',
-
     ));
   }
 }
