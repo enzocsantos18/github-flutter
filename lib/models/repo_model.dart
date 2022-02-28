@@ -84,7 +84,7 @@ class Repo {
   late final String? htmlUrl;
   late final String? description;
   late final bool fork;
-  late final String? url;
+  late final String url;
   late final String? forksUrl;
   late final String? keysUrl;
   late final String? collaboratorsUrl;
@@ -124,10 +124,10 @@ class Repo {
   late final String createdAt;
   late final String? updatedAt;
   late final String? pushedAt;
-  late final String? gitUrl;
+  late final String gitUrl;
   late final String? sshUrl;
   late final String? cloneUrl;
-  late final String? svnUrl;
+  late final String svnUrl;
   late final int size;
   late final int stargazersCount;
   late final int watchersCount;

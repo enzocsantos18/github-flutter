@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:github_flutter/models/repo_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RepoPage extends StatelessWidget {
   const RepoPage({Key? key, required this.repo}) : super(key: key);
@@ -23,29 +24,44 @@ class RepoPage extends StatelessWidget {
               children: [
                 Text('Informações',
                     style: Theme.of(context).textTheme.headline4),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Nome: ' + repo.fullName),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Descrição: ' + (repo.description ?? '-')),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Linguagem: ' + (repo.language ?? '-')),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Watchers: ' + repo.watchers.toString()),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Issues: ' + repo.openIssues.toString()),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 Text('Criado em: ' + repo.createdAt),
                 Text('Updated em: ' + (repo.updatedAt ?? '-')),
-                const SizedBox(height: 60,),
-
+                const SizedBox(
+                  height: 60,
+                ),
                 Center(
                   child: ElevatedButton(
-                      onPressed: () async {},
+                      onPressed: () async {
+                        String url = repo.svnUrl;
+                        if (await canLaunch(url)) {
+                          await launch(url, forceWebView: true, enableJavaScript: true);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
                       child: const Text('Acessar via web')),
                 )
               ],
